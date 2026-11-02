@@ -1,0 +1,16 @@
+.ev-about-hero { padding: 4.5rem 0; overflow: hidden; background: linear-gradient(120deg, #f2faf4, #fff 72%); }
+.ev-about-kicker { margin-bottom: .8rem; color: var(--ev-green); font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.ev-about-hero h1 { max-width: 720px; color: var(--ev-green-dark); font-size: clamp(2.2rem, 4.8vw, 3.7rem); }
+.ev-about-lead { max-width: 650px; color: var(--ev-muted); font-size: 1.1rem; }
+.ev-about-logo { width: min(280px, 80%); height: auto; filter: drop-shadow(0 14px 20px rgba(1,107,45,.09)); }
+.ev-about-commitments { background: #fff; }
+.ev-about-heading { max-width: 650px; margin: 0 auto 2.5rem; }
+.ev-about-heading h2 { color: var(--ev-green-dark); font-size: clamp(1.8rem, 3.5vw, 2.5rem); }
+.ev-about-card { padding: 1.6rem; border: 1px solid #e2ece5; border-radius: 1rem; background: #fff; box-shadow: 0 8px 26px rgba(1,107,45,.055); }
+.ev-about-icon { display: grid; width: 48px; height: 48px; place-items: center; border-radius: 14px; background: var(--ev-green-light); color: var(--ev-green); font-size: 1.3rem; }
+.ev-about-card h3 { margin: 1.2rem 0 .5rem; color: var(--ev-green-dark); font-size: 1.15rem; }
+.ev-about-card p { margin: 0; color: var(--ev-muted); }
+@media (max-width: 767.98px) {
+  .ev-about-hero { padding: 3rem 0; }
+  .ev-about-logo { width: 210px; }
+}

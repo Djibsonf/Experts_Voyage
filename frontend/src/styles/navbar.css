@@ -1,0 +1,51 @@
+.ev-navbar {
+  min-height: 66px;
+  padding-block: .35rem;
+  background: rgba(255, 255, 255, .98);
+  box-shadow: 0 5px 20px rgba(20, 38, 27, .08);
+  backdrop-filter: blur(12px);
+}
+.ev-navbar::after {
+  position: absolute; right: 0; bottom: 0; left: 0; height: 3px;
+  background: linear-gradient(90deg, var(--ev-green) 0 72%, var(--ev-orange) 72%);
+  content: ''; transform: scaleX(0); transform-origin: left;
+  animation: ev-line-reveal .9s ease-out forwards;
+}
+@keyframes ev-line-reveal { to { transform: scaleX(1); } }
+@media (prefers-reduced-motion: reduce) {
+  .ev-navbar::after { animation: none; transform: scaleX(1); }
+}
+.ev-brand { flex: 0 0 auto; padding: 0; }
+.ev-brand img { display: block; width: auto; height: 44px; }
+.ev-links { gap: .25rem; }
+.ev-links .nav-link {
+  position: relative; display: flex; align-items: center; gap: .4rem; padding: .55rem .65rem;
+  color: var(--ev-text); font-size: .88rem; font-weight: 500;
+  white-space: nowrap; transition: color .2s;
+}
+.ev-links .nav-link i { color: var(--ev-green); transition: color .2s; }
+.ev-links .nav-link::after {
+  position: absolute; right: .65rem; bottom: .2rem; left: .65rem; height: 2px;
+  background: var(--ev-orange); content: ''; transform: scaleX(0); transition: transform .2s;
+}
+.ev-links .nav-link:hover, .ev-links .nav-link.active { color: var(--ev-green-dark); }
+.ev-links .nav-link:hover::after, .ev-links .nav-link.active::after { transform: scaleX(1); }
+.ev-links .nav-link.active { font-weight: 650; }
+.ev-booking { display: inline-flex; align-items: center; gap: .5rem; padding: .5rem 1.2rem; white-space: nowrap; }
+.ev-toggler { padding: .25rem .45rem; box-shadow: none !important; }
+.ev-toggler:focus-visible { outline: 3px solid var(--ev-orange); }
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .ev-brand img { height: 38px; }
+  .ev-links { gap: 0; }
+  .ev-links .nav-link { gap: .25rem; padding-inline: .38rem; font-size: .78rem; }
+  .ev-links .nav-link i { display: none; }
+  .ev-booking { gap: .3rem; padding: .45rem .7rem; font-size: .8rem; }
+}
+@media (max-width: 991.98px) {
+  .ev-navbar { min-height: 60px; }
+  .ev-brand img { height: 44px; }
+  .ev-navbar .navbar-collapse { padding: .65rem 0 .8rem; }
+  .ev-links { align-items: stretch; }
+  .ev-links .nav-link { padding: .6rem .7rem; }
+  .ev-booking { justify-content: center; width: 100%; margin-top: .45rem; }
+}

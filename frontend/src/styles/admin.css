@@ -1,0 +1,24 @@
+.ev-auth-page {
+  background: radial-gradient(circle at 15% 10%, var(--ev-green-light), transparent 35%), #f4f8f5;
+}
+.ev-auth-card {
+  width: min(1000px, 100%);
+  min-height: 540px;
+  border: 1px solid rgba(1, 107, 45, 0.1);
+  box-shadow: 0 24px 70px rgba(20, 38, 27, 0.13);
+}
+.ev-auth-form { width: 100%; max-width: 420px; }
+.ev-auth-form h1 { color: var(--ev-green-dark); }
+.ev-auth-visual img { max-width: 340px; }
+.ev-auth-card .form-control:focus {
+  border-color: var(--ev-green);
+  box-shadow: 0 0 0 0.2rem rgba(1, 149, 63, 0.13);
+}
+.ev-auth-submit { min-height: 48px; border: 0; background: var(--ev-green); color: #fff; font-weight: 700; }
+.ev-auth-submit:hover { background: var(--ev-green-dark); color: #fff; }
+.ev-auth-link { color: var(--ev-green-dark); font-weight: 600; text-decoration: none; }
+.ev-password-page { min-height: calc(100vh - 76px) !important; margin: -2rem; }
+.ev-password-card { min-height: 500px; }
+.ev-password-toggle { border-color: #ced8d0; color: #39734e; }
+.ev-password-toggle:hover { border-color: var(--ev-green); background: var(--ev-green-light); color: var(--ev-green-dark); }
+@media (max-width: 767.98px) { .ev-password-page { min-height: calc(100vh - 64px) !important; margin: -1rem; } .ev-password-card { min-height: auto; } }

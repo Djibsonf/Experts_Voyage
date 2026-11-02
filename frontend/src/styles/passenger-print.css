@@ -1,0 +1,14 @@
+@media print {
+  body { padding-top: 0 !important; background: #fff !important; }
+  .ev-admin-sidebar, .ev-admin-topbar, .ev-passenger-actions,
+  .ev-admin-page-head .btn, .ev-admin-table th:last-child,
+  .ev-admin-table td:last-child, .alert { display: none !important; }
+  .ev-admin-main { margin: 0 !important; }
+  .ev-admin-content { max-width: none !important; padding: 0 !important; }
+  .ev-admin-page-head { margin-bottom: 1rem !important; }
+  .ev-admin-panel { padding: 0 !important; border: 0 !important; box-shadow: none !important; }
+  .table-responsive { overflow: visible !important; }
+  .ev-admin-table { width: 100% !important; font-size: 9pt; }
+  .ev-admin-table th, .ev-admin-table td { padding: .35rem !important; }
+  a { color: #000 !important; text-decoration: none !important; }
+}

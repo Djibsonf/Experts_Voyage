@@ -1,0 +1,55 @@
+/* Fonds alternés */
+.bg-ev-white { background-color: var(--ev-white); color: var(--ev-text); }
+.bg-ev-green { background-color: var(--ev-green); color: var(--ev-white); }
+.bg-ev-light { background-color: var(--ev-green-light); color: var(--ev-text); }
+.bg-ev-dark { background-color: var(--ev-green-dark); color: var(--ev-white); }
+
+/* Textes */
+.text-ev-green { color: var(--ev-green); }
+.text-ev-orange { color: var(--ev-orange); }
+.text-ev-muted { color: var(--ev-muted); }
+
+/* Sections */
+.section { padding: 4rem 0; }
+
+/* Boutons */
+.btn-ev {
+  background-color: var(--ev-orange);
+  border: 2px solid var(--ev-orange);
+  color: #1b1200;
+  font-weight: 600;
+  border-radius: 50rem;
+  padding: 0.6rem 1.6rem;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.btn-ev:hover,
+.btn-ev:focus {
+  background-color: var(--ev-orange-dark);
+  border-color: var(--ev-orange-dark);
+  color: #1b1200;
+}
+.btn-ev-outline {
+  background: transparent;
+  border: 2px solid var(--ev-green);
+  color: var(--ev-green);
+  font-weight: 600;
+  border-radius: 50rem;
+  padding: 0.6rem 1.6rem;
+}
+.btn-ev-outline:hover { background-color: var(--ev-green); color: var(--ev-white); }
+
+/* Carte */
+.card-ev {
+  background: var(--ev-white);
+  border: 1px solid #dbe6de;
+  border-radius: 1rem;
+  box-shadow: 0 2px 10px rgba(1, 107, 45, 0.06);
+}
+
+/* WhatsApp flottant */
+.ev-whatsapp {
+  width: 56px; height: 56px; z-index: 1030;
+  background: var(--ev-whatsapp); color: #fff; font-size: 1.75rem;
+  transition: transform 0.2s;
+}
+.ev-whatsapp:hover { transform: scale(1.1); color: #fff; }
