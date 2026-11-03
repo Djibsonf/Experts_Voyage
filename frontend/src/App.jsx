@@ -15,6 +15,7 @@ import AdminCaravanDetail from "./pages/admin/AdminCaravanDetail";
 import AdminProfile from "./pages/admin/AdminProfile";
 import AdminPasswordChange from "./pages/admin/AdminPasswordChange";
 import { isAuthenticated } from "./api/admin";
+import { ToastProvider } from "./components/ToastProvider";
 
 function AdminEntry() {
   return isAuthenticated()
@@ -39,7 +40,7 @@ export default function App() {
   }, [isAdmin]);
 
   return (
-    <>
+    <ToastProvider>
       <ScrollToHash />
       {!isAdmin && <Navbar />}
       <main>
@@ -66,6 +67,6 @@ export default function App() {
       </main>
       {!isAdmin && <Footer />}
       {!isAdmin && <WhatsAppButton />}
-    </>
+    </ToastProvider>
   );
 }

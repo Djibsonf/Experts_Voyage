@@ -4,11 +4,13 @@ import logo from '../assets/logo-horizontal@2x.png'
 import loginIllustration from '../assets/login.png'
 import forgotIllustration from '../assets/forgot_password.png'
 import { login } from '../api/admin'
+import { useToast } from '../components/ToastProvider'
 import '../styles/admin.css'
 
 export default function AdminAuth() {
   const { pathname } = useLocation()
   const navigate = useNavigate()
+  const showToast = useToast()
   const forgot = pathname === '/admin/mot-de-passe-oublie'
   const [showPassword, setShowPassword] = useState(false)
   const [notice, setNotice] = useState('')
@@ -38,9 +40,14 @@ export default function AdminAuth() {
     setSubmitting(true)
     try {
       await login(email, password)
+      showToast('Connexion réussie. Bienvenue dans votre espace administrateur.')
       navigate('/admin/tableau-de-bord', { replace: true })
     } catch (error) {
-      setNotice(error.response?.data?.message ?? 'Connexion impossible. Vérifiez le serveur et vos identifiants.')
+      const response = error.response?.data
+      const message = response?.code === 'IDENTIFIANTS_INVALIDES'
+        ? 'Adresse e-mail ou mot de passe incorrect.'
+        : response?.message ?? 'Connexion impossible. Vérifiez votre email et votre mot de passe.'
+      showToast(message, 'danger')
     } finally {
       setSubmitting(false)
     }

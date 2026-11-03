@@ -30,6 +30,11 @@
 .ev-admin-page-head h1 { margin: 0; color: #143c25; font-size: clamp(1.45rem, 2vw, 1.9rem); font-weight: 750; }
 .ev-admin-page-head p { margin: .4rem 0 0; color: #77847b; }
 .ev-admin-panel { padding: 1.25rem; border: 1px solid #e7ede8; border-radius: .9rem; background: #fff; box-shadow: 0 4px 18px #183b2208; }
+.ev-confirm-backdrop { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; padding: 1rem; background: #14251bcc; }
+.ev-confirm-dialog { width: min(100%, 440px); padding: 1.75rem; border: 1px solid #e7ede8; border-radius: 1rem; background: #fff; box-shadow: 0 20px 60px #10281940; }
+.ev-confirm-icon { display: grid; width: 3rem; height: 3rem; margin-bottom: 1rem; place-items: center; border-radius: 50%; background: #fff1f0; color: #c62828; font-size: 1.25rem; }
+.ev-confirm-dialog h2 { margin: 0; font-size: 1.25rem; }
+.ev-confirm-dialog p { margin: .65rem 0 1.5rem; color: #718278; }
 .ev-admin-stat { display: flex; min-height: 120px; align-items: center; justify-content: space-between; padding: 1.3rem; border: 1px solid #e7ede8; border-radius: .9rem; background: #fff; }
 .ev-admin-stat strong { display: block; color: #143c25; font-size: 1.8rem; }
 .ev-admin-stat span { color: #738078; font-size: .88rem; }

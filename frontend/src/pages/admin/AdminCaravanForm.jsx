@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import api from '../../api/client'
+import { useToast } from '../../components/ToastProvider'
 
 const initialForm = {
   nom: '', villeDepart: 'Dakar', departLe: '', capacite: 55,
@@ -11,6 +12,7 @@ const initialForm = {
 export default function AdminCaravanForm() {
   const { id } = useParams()
   const navigate = useNavigate()
+  const showToast = useToast()
   const editing = Boolean(id)
   const [form, setForm] = useState(initialForm)
   const [loading, setLoading] = useState(editing)
@@ -40,9 +42,10 @@ export default function AdminCaravanForm() {
       } else {
         await api.post('/api/admin/caravanes', { ...form, capacite: Number(form.capacite), prixDepartKaolack: form.prixDepartKaolack ? Number(form.prixDepartKaolack) : null, lienWaveDepartKaolack: form.lienWaveDepartKaolack.trim() || null, prixDepartDestination: Number(form.prixDepartDestination), prixKaolackDestination: form.prixKaolackDestination ? Number(form.prixKaolackDestination) : null, lienWaveKaolackDestination: form.lienWaveKaolackDestination.trim() || null })
       }
+      showToast(editing ? 'La caravane a été modifiée.' : 'La caravane a été créée.')
       navigate('/admin/caravanes')
     } catch (requestError) {
-      setError(requestError.response?.data?.message ?? 'La caravane n’a pas pu être enregistrée.')
+      showToast(requestError.response?.data?.message ?? 'La caravane n’a pas pu être enregistrée.', 'danger')
     } finally {
       setSaving(false)
     }

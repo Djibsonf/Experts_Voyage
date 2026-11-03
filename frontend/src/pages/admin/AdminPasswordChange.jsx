@@ -1,13 +1,13 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import api from '../../api/client'
+import { useToast } from '../../components/ToastProvider'
 import illustration from '../../assets/change_password.png'
 import '../../styles/admin.css'
 
 export default function AdminPasswordChange() {
+  const showToast = useToast()
   const [form, setForm] = useState({ ancienMotDePasse: '', nouveauMotDePasse: '', confirmation: '' })
-  const [notice, setNotice] = useState('')
-  const [error, setError] = useState('')
   const [saving, setSaving] = useState(false)
   const [visible, setVisible] = useState({ ancienMotDePasse: false, nouveauMotDePasse: false, confirmation: false })
 
@@ -15,10 +15,8 @@ export default function AdminPasswordChange() {
   const toggleVisible = (field) => setVisible((current) => ({ ...current, [field]: !current[field] }))
   const submit = async (event) => {
     event.preventDefault()
-    setError('')
-    setNotice('')
     if (form.nouveauMotDePasse !== form.confirmation) {
-      setError('Les deux nouveaux mots de passe ne correspondent pas.')
+      showToast('Les deux nouveaux mots de passe ne correspondent pas.', 'danger')
       return
     }
     setSaving(true)
@@ -28,9 +26,9 @@ export default function AdminPasswordChange() {
         nouveauMotDePasse: form.nouveauMotDePasse,
       })
       setForm({ ancienMotDePasse: '', nouveauMotDePasse: '', confirmation: '' })
-      setNotice('Votre mot de passe a été modifié.')
+      showToast('Votre mot de passe a été modifié.')
     } catch (requestError) {
-      setError(requestError.response?.data?.message ?? 'Modification impossible. Vérifiez votre mot de passe actuel.')
+      showToast(requestError.response?.data?.message ?? 'Modification impossible. Vérifiez votre mot de passe actuel.', 'danger')
     } finally {
       setSaving(false)
     }
@@ -49,8 +47,6 @@ export default function AdminPasswordChange() {
               <h1 className="h4 fw-bold mb-1">Changer le mot de passe</h1>
               <p className="text-secondary small mb-0">Choisissez un nouveau mot de passe sécurisé.</p>
             </div>
-            {error && <div className="alert alert-danger py-2 small" role="alert">{error}</div>}
-            {notice && <div className="alert alert-success py-2 small" role="status">{notice}</div>}
             <form onSubmit={submit}>
               <label className="form-label fw-semibold small" htmlFor="old-password">Mot de passe actuel</label>
               <div className="input-group mb-3"><input className="form-control" id="old-password" type={visible.ancienMotDePasse ? 'text' : 'password'} name="ancienMotDePasse" autoComplete="current-password" value={form.ancienMotDePasse} onChange={change} required /><button className="btn btn-outline-secondary ev-password-toggle" type="button" onClick={() => toggleVisible('ancienMotDePasse')} aria-label={visible.ancienMotDePasse ? 'Masquer le mot de passe actuel' : 'Afficher le mot de passe actuel'}><i className={`bi ${visible.ancienMotDePasse ? 'bi-eye-slash' : 'bi-eye'}`} /></button></div>
